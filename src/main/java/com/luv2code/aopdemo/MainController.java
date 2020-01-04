@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.luv2code.aopdemo.dao.AccountDAO;
+import com.luv2code.aopdemo.dao.FriendDAO;
 import com.luv2code.aopdemo.dao.MembershipDAO;
 
 @Controller
@@ -23,12 +24,16 @@ public class MainController {
 		// get the bean from spring container
 		AccountDAO theAccountDAO = context.getBean("accountDAO", AccountDAO.class);
 		MembershipDAO theMembershipDAO = context.getBean("membershipDAO", MembershipDAO.class);
+		FriendDAO theFriendDAO = context.getBean("friendDAO", FriendDAO.class);
 		
 		// call the business method
 		theAccountDAO.addAccount();
 		
 		// call the membership business method
 		theMembershipDAO.addAccount();
+		
+		// call the membership business method
+		theFriendDAO.addFriend();
 		
 		// close the context
 		context.close();
