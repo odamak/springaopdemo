@@ -28,9 +28,11 @@ public class MainController {
 		FriendDAO theFriendDAO = context.getBean("friendDAO", FriendDAO.class);
 //		FriendDAO theFriendDAO2 = context.getBean("friendDAO", FriendDAO.class);
 		PageDAO thePageDAO = context.getBean("pageDAO", PageDAO.class);
+		
+		Account theAccount = new Account();
 
 		// call the business method
-		theAccountDAO.addAccount();
+		theAccountDAO.addAccount(theAccount, true);
 
 		// call the membership business method
 		theMembershipDAO.addAccount();
