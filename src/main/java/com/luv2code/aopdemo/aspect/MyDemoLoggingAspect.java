@@ -13,7 +13,7 @@ public class MyDemoLoggingAspect {
 	private void forDaoPackage() {}
 	
 	@Pointcut("execution(* com.luv2code.aopdemo.dao.*.*())")
-	private void removeForDAOPackage() {}
+	private void methodForDAOPackageWithNoParam() {}
 	
 	@Pointcut("execution(* com.luv2code.aopdemo.dao.*.get*())")
 	private void getter() {}
@@ -21,8 +21,8 @@ public class MyDemoLoggingAspect {
 	@Pointcut("execution(* com.luv2code.aopdemo.dao.*.set*(*))")
 	private void setter() {}
 	
-	@Pointcut("removeForDAOPackage() && !(getter() || setter())")
-	private void RemoveDefaultPackageNoGetterSetter() {}
+	@Pointcut("methodForDAOPackageWithNoParam() && !(getter() || setter())")
+	private void MethodDefaultPackageNoGetterSetter() {}
 	
 	@Before("forDaoPackage()")
 	public void beforeAddAccountAdvice() {
@@ -34,7 +34,7 @@ public class MyDemoLoggingAspect {
 		System.out.println("\n======>>> Performing API analytics");
 	}
 	
-	@Before("RemoveDefaultPackageNoGetterSetter()")
+	@Before("MethodDefaultPackageNoGetterSetter()")
 	public void beforeDefaultPackageAdvice() {
 		System.out.println("\n======>>> Performing checks on DAO package before any method execution that is no getter and no setter and that has no parameter");
 	}
