@@ -1,10 +1,10 @@
 package com.luv2code.aopdemo.aspect;
 
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
-import com.luv2code.aopdemo.aspect.AopExpressions;
 
 @Aspect
 @Component
@@ -12,8 +12,13 @@ import com.luv2code.aopdemo.aspect.AopExpressions;
 public class MyDemoLoggingAspect {
 	
 	@Before("com.luv2code.aopdemo.aspect.AopExpressions.forDaoPackage()")
-	public void beforeAddAccountAdvice() {
+	public void beforeAddAccountAdvice(JoinPoint theJoinPoint) {
 		System.out.println("\n======>>> Checking logging");
+		Object[] args = theJoinPoint.getArgs();
+		for(Object tempArg: args) {
+			System.out.println(tempArg);
+		}
+		System.out.println("\n======>>> End Checking logging");
 	}
 	
 	@Before("com.luv2code.aopdemo.aspect.AopExpressions.MethodDefaultPackageNoGetterSetter()")
