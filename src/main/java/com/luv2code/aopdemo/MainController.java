@@ -31,6 +31,15 @@ public class MainController {
 
 		// call the membership business method
 		theMembershipDAO.addAccount();
+		
+		// call removeAccount to use Pointcuts combination
+		theAccountDAO.removeAccount();
+		theMembershipDAO.removeAccount();
+		
+		// call getter and setter to test that Pointcuts combination is not called
+		System.out.println("executing setter but no advice");
+		theAccountDAO.setTestVariable("hello");
+		System.out.println("getter is displaying following without advice: "+theAccountDAO.getTestVariable());
 
 		// close the context
 		context.close();

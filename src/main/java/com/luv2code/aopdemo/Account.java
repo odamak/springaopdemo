@@ -16,6 +16,13 @@ public class Account {
 	}
 	public void setLevel(String level) {
 		this.level = level;
-	}	
+	}
+	
+	public String displayString() {
+		System.out.println("Account [name=" + name + ", level=" + level + "]");
+		return "Account [name=" + name + ", level=" + level + "]";
+	}
+	
+	
 
 }
