@@ -3,6 +3,7 @@ package com.luv2code.aopdemo.aspect;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -14,6 +15,8 @@ public class MyDemoLoggingAspect {
 	@Before("com.luv2code.aopdemo.aspect.AopExpressions.forDaoPackage()")
 	public void beforeAddAccountAdvice(JoinPoint theJoinPoint) {
 		System.out.println("\n======>>> Checking logging");
+		MethodSignature methodSig = (MethodSignature) theJoinPoint.getSignature();
+		System.out.println("Method: "+ methodSig);
 		Object[] args = theJoinPoint.getArgs();
 		for(Object tempArg: args) {
 			System.out.println(tempArg);
