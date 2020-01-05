@@ -3,10 +3,12 @@ package com.luv2code.aopdemo.aspect;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
+@Order(1)
 public class MyDemoLoggingAspect {
 	
 	@Pointcut("execution(* add*(com.luv2code.aopdemo.Account, ..))")
@@ -26,12 +28,7 @@ public class MyDemoLoggingAspect {
 	
 	@Before("forDaoPackage()")
 	public void beforeAddAccountAdvice() {
-		System.out.println("\n======>>> Executing @Before advice on method");
-	}
-	
-	@Before("forDaoPackage()")
-	public void performAPIAnalytics() {
-		System.out.println("\n======>>> Performing API analytics");
+		System.out.println("\n======>>> Checking logging");
 	}
 	
 	@Before("MethodDefaultPackageNoGetterSetter()")
