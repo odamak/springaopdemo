@@ -47,10 +47,27 @@ public class MainController {
 		theAccountDAO.createAliasAccount(" alias1009");
 		
 		//AfterReturning another use case
-		List<Account> theAccounts = theAccountDAO.findAccounts();
+		List<Account> theAccounts = theAccountDAO.findAccounts(false);
 		System.out.println("\n\nMain Program: AfterReturningApp");
 		System.out.println("---");
 		System.out.println(theAccounts);
+		System.out.println("\n");
+		
+		//AfterThrowing use case
+		AccountDAO theAccountDAO2 = context.getBean("accountDAO", AccountDAO.class);
+		List<Account> theAccounts2 = null;
+		try {
+			// add a boolean flag to simulate exceptions
+			boolean tripWire = true;
+			theAccounts2 = theAccountDAO2.findAccounts(tripWire);
+			
+		} catch (Exception exc) {
+			System.out.println("\n\nMain Program... caught exception: "+exc);
+		}
+		
+		System.out.println("\n\nMain Program... : After Throwing Demo App");
+		System.out.println("---");
+		System.out.println(theAccounts2);
 		System.out.println("\n");
 		
 

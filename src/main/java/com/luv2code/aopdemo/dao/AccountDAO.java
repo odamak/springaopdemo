@@ -38,7 +38,12 @@ public class AccountDAO {
 		return(testVariable+alias);
 	}
 	
-	public List<Account> findAccounts() {
+	public List<Account> findAccounts(boolean tripWire) {
+		
+		// for academic purpose ... simulate an exception
+		if (tripWire) {
+			throw new RuntimeException("No soup for you!!!");
+		}
 		
 		List<Account> myAccounts = new ArrayList<Account>();
 		
