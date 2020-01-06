@@ -12,7 +12,7 @@ public class MyCloudLogAspect {
 	
 	@Before("com.luv2code.aopdemo.aspect.AopExpressions.forDaoPackage()")
 	public void beforeAddAccountAdvice() {
-		System.out.println("\n======>>> Performing cloud logging");
+		System.out.println("\n======>>> Performing cloud logging for any add method");
 	}
 
 }

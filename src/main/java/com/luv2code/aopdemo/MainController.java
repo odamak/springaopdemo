@@ -1,5 +1,7 @@
 package com.luv2code.aopdemo;
 
+import java.util.List;
+
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,7 +43,16 @@ public class MainController {
 		theAccountDAO.setTestVariable("hello");
 		System.out.println("getter is displaying following without advice: "+theAccountDAO.getTestVariable());
 		
+		//AfterReturning use case
 		theAccountDAO.createAliasAccount(" alias1009");
+		
+		//AfterReturning another use case
+		List<Account> theAccounts = theAccountDAO.findAccounts();
+		System.out.println("\n\nMain Program: AfterReturningApp");
+		System.out.println("---");
+		System.out.println(theAccounts);
+		System.out.println("\n");
+		
 
 		// close the context
 		context.close();

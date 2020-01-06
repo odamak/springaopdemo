@@ -12,7 +12,7 @@ public class MyApiAnalyticsAspect {
 	
 	@Before("com.luv2code.aopdemo.aspect.AopExpressions.forDaoPackage()")
 	public void performAPIAnalytics() {
-		System.out.println("\n======>>> Performing API analytics");
+		System.out.println("\n======>>> Performing API analytics for any add method");
 	}
 
 }
