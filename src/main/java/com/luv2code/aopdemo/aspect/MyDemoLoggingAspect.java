@@ -3,9 +3,11 @@ package com.luv2code.aopdemo.aspect;
 import java.util.List;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -71,6 +73,16 @@ public class MyDemoLoggingAspect {
 	public void beforeDefaultPackageAdvice() {
 		System.out.println(
 				"\n======>>> Performing checks on DAO package before any method execution that is no getter and no setter and that has no parameter");
+	}
+	
+	@Around("execution(* com.luv2code.aopdemo.dao.AccountDAO.findAccounts(..))")
+	public Object aroundFindAccountsAdvice(ProceedingJoinPoint theProceedingJoinPoint) throws Throwable {
+		long begin = System.currentTimeMillis();
+		Object result = theProceedingJoinPoint.proceed();
+		long end = System.currentTimeMillis();
+		long duration = end - begin;
+		System.out.println("\n======> Duration: "+duration+ " milliseconds");
+		return result;
 	}
 
 }
