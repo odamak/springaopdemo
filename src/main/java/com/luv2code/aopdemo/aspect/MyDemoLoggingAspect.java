@@ -1,6 +1,7 @@
 package com.luv2code.aopdemo.aspect;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -79,6 +80,7 @@ public class MyDemoLoggingAspect {
 	public Object aroundFindAccountsAdvice(ProceedingJoinPoint theProceedingJoinPoint) throws Throwable {
 		long begin = System.currentTimeMillis();
 		Object result = theProceedingJoinPoint.proceed();
+		TimeUnit.SECONDS.sleep(5);
 		long end = System.currentTimeMillis();
 		long duration = end - begin;
 		System.out.println("\n======> Duration: "+duration+ " milliseconds");
