@@ -28,5 +28,11 @@ public class AccountDAO {
 		System.out.println(getClass() + ": DOING MY DB WORK: REMOVING AN ACCOUNT");
 
 	}
+	
+	public String createAliasAccount(String alias) {
+		testVariable = "hihi";
+		System.out.println(getClass() + " Executing create Alias Account ... "+ testVariable+alias);
+		return(testVariable+alias);
+	}
 
 }

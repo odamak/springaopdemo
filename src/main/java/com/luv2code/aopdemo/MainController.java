@@ -40,6 +40,8 @@ public class MainController {
 		System.out.println("executing setter but no advice");
 		theAccountDAO.setTestVariable("hello");
 		System.out.println("getter is displaying following without advice: "+theAccountDAO.getTestVariable());
+		
+		theAccountDAO.createAliasAccount(" alias1009");
 
 		// close the context
 		context.close();
