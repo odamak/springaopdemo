@@ -3,6 +3,7 @@ package com.luv2code.aopdemo.aspect;
 import java.util.List;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
@@ -45,6 +46,13 @@ public class MyDemoLoggingAspect {
 		// print out the results of the method call
 		System.out.println("\n======>>>> Executing @AfterThrowing on method: " + method);
 		System.out.println("@AfterThrowing is saying: The exception is " + theExc);
+	}
+
+	@After("execution(* com.luv2code.aopdemo.dao.AccountDAO.findAccounts(..))")
+	public void afterTFindAccountsAdvice(JoinPoint theJoinPoint) {
+		// print out which method we are advising on
+		String method = theJoinPoint.getSignature().toShortString();
+		System.out.println("\n======>>>> Executing @After on method: " + method);
 	}
 
 	@Before("com.luv2code.aopdemo.aspect.AopExpressions.forDaoPackage()")
